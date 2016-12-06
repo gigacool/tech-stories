@@ -13,7 +13,7 @@ le cas de github qui me fait faux bon au moment où j'écris ce document le 6 d�
 ## La solution
 Comme présenté à l'oral, le point #1 consiste à se désengager du service à l'aide d'un pattern **facade** sous la forme d'un (micro) service proxy. Au lieu d'acceder directement au service tiers, on crée un intermédiaire qui va prendre la résponsabilité sur le service. Une simplification du schema général est présenté ci-dessous:
 
-![Schéma général](./3rdpartydeps-w.svg)
+![Schéma général](./3rdpartydeps-w.png)
 
 Une fois mis en place, si le service est discontinué par le provider tiers, il est possible, dans
 une certaine limite de reposer sur un autre service (par exemple, l'équivalent de apple ou microsoft).
@@ -29,7 +29,7 @@ Je ne pense pas rentrer plus dans le détail sur cette partie, les apis diverses
 
 Dans tous les cas, l'on a besoin de faire le pont entre des coordonnées géometriques (latitude, longitute) des des lieux dits. Cette partie est rapidement discutée dan la section suivante.
 
-Modéliser les données ici est simple, l'une des difficultés concerne le requêtage. Une solution *simple* consiste à stocker des latitudes et longitudes de telles manière à pouvoir requêter sur des distances (par exemple, des coordonnées sphériques). Cela pourrait fonctionner mais se montrera probablement très couteux. On pourrait également se reposer sur les capacités de SGBDs à traiter des coordonnées spaciales (https://en.wikipedia.org/wiki/Spatial_database#Spatial_index). 
+Modéliser les données ici est simple, l'une des difficultés concerne le requêtage. Une solution *simple* consiste à stocker des latitudes et longitudes de telles manière à pouvoir requêter sur des distances (par exemple, des coordonnées sphériques). Cela pourrait fonctionner mais se montrera probablement très couteux. On pourrait également se reposer sur les capacités de SGBDs à traiter des coordonnées spaciales (https://en.wikipedia.org/wiki/Spatial_database#Spatial_index).
 
 ### 2 Caching des données
 Définir un modèle est une chose, il faut rendre les données accessibles en cas d'indisponibilité des composants tiers. La créationd du cache peut se faire en 2 phases: 1) bootstrap 2) completion.
