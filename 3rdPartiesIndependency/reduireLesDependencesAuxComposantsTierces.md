@@ -31,6 +31,8 @@ Dans tous les cas, l'on a besoin de faire le pont entre des coordonnées géomet
 
 Modéliser les données ici est simple, l'une des difficultés concerne le requêtage. Une solution *simple* consiste à stocker des latitudes et longitudes de telles manière à pouvoir requêter sur des distances (par exemple, des coordonnées sphériques). Cela pourrait fonctionner mais se montrera probablement très couteux. On pourrait également se reposer sur les capacités de SGBDs à traiter des coordonnées spaciales (https://en.wikipedia.org/wiki/Spatial_database#Spatial_index).
 
+Il faut également pouvoir compenser des services tels que les services d'itinéraires. Sur la base de la grille constituée, on peut tisser des liens d'itinéraires afin de créer une structure en graphe que l'on peut parcourir pour définir des itinéraires dégradés. 
+
 ### 2 Caching des données
 Définir un modèle est une chose, il faut rendre les données accessibles en cas d'indisponibilité des composants tiers. La créationd du cache peut se faire en 2 phases: 1) bootstrap 2) completion.
 
